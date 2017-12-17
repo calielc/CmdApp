@@ -14,7 +14,7 @@ sequenceAnalysis --input <input text>
 
 Sample: 
 ```
-dotnet run --project runner sequenceAnalysis --input "This IS a STRING"
+CmdApp\Runner> dotnet run sequenceAnalysis --input "This IS a STRING"
 ```
 
 ## sumOfMultiple
@@ -27,6 +27,6 @@ sumOfMultiple --limit <input value>
 
 Sample: 
 ```
-dotnet run --project runner sumOfMultiple --limit 100
+CmdApp\Runner> dotnet run sumOfMultiple --limit 100
 ```
 

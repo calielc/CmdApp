@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CmdApp.Domain.Tests {
+namespace Domain.Tests {
     [TestClass]
     public sealed class ContainerTests {
         [TestMethod]

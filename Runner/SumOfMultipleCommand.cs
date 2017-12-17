@@ -1,8 +1,8 @@
 ﻿using System.Numerics;
-using CmdApp.Domain;
+using Domain;
 using McMaster.Extensions.CommandLineUtils;
 
-namespace CmdApp.Runner {
+namespace Runner {
     [Command(Description = "Sum of all natural numbers that are a multiple of 3 or 5 below a limit")]
     public class SumOfMultipleCommand {
         public const string Name = "sumOfMultiple";

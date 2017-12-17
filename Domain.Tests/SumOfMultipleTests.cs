@@ -2,16 +2,16 @@
 using System.Numerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CmdApp.SumOfMultiple.Tests {
+namespace Domain.Tests {
     [TestClass]
-    public class SumOfMultipleTests {
+    public sealed class SumOfMultipleTests {
         [TestMethod]
         [DataRow(-1)]
         [DataRow(-789)]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Should_throw_exception_when_limit_is_below_0(int limit) {
             var service = new SumOfMultiple();
-            var unsued = service.Execute(limit);
+            var dummy = service.Execute(limit);
         }
 
         [TestMethod]

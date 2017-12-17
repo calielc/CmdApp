@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace CmdApp.SumOfMultiple {
+namespace Domain {
     public interface ISumOfMultiple {
         /// <summary>
         ///  Sum of all natural numbers that are a multiple of 3 or 5 below a limit

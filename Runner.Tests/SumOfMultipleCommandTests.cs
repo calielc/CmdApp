@@ -1,7 +1,7 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CmdApp.Runner.Tests {
+namespace Runner.Tests {
     [TestClass]
     public sealed class SumOfMultipleCommandTests {
         private ConsoleMock _consoleMock;

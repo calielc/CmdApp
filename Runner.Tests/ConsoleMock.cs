@@ -2,7 +2,7 @@ using System.IO;
 using McMaster.Extensions.CommandLineUtils;
 using Moq;
 
-namespace CmdApp.Runner.Tests {
+namespace Runner.Tests {
     internal sealed class ConsoleMock {
         public ConsoleMock() {
             Console = new Mock<IConsole>();

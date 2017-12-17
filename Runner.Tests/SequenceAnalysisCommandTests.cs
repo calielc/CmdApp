@@ -1,8 +1,8 @@
 using System;
-using CmdApp.Domain;
+using Domain;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CmdApp.Runner.Tests {
+namespace Runner.Tests {
     [TestClass]
     public sealed class SequenceAnalysisCommandTests {
         private ConsoleMock _consoleMock;

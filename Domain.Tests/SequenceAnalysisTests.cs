@@ -1,7 +1,7 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CmdApp.Domain.Tests {
+namespace Domain.Tests {
     [TestClass]
     public sealed class SequenceAnalysisTests {
         [TestMethod]
@@ -16,7 +16,7 @@ namespace CmdApp.Domain.Tests {
             var service = new SequenceAnalysis();
             var actual = service.Execute(input);
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual<string>(expected, actual);
         }
 
         [TestMethod]

@@ -2,8 +2,8 @@
 using System.Numerics;
 using System.Runtime.CompilerServices;
 
-namespace CmdApp.SumOfMultiple {
-    public sealed class SumOfMultiple : ISumOfMultiple {
+namespace Domain {
+    internal sealed class SumOfMultiple : ISumOfMultiple {
         public BigInteger Execute(BigInteger limit) {
             if (limit < BigInteger.Zero) {
                 throw new ArgumentOutOfRangeException(nameof(limit));

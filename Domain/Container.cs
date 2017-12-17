@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace CmdApp.Domain {
+namespace Domain {
     public static class Container {
         internal static ServiceProvider ServiceProvider = new ServiceCollection()
             .AddSingleton<ISumOfMultiple, SumOfMultiple>()

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 
-namespace CmdApp.SequenceAnalysis {
-    public sealed class SequenceAnalysis : ISequenceAnalysis {
+namespace Domain {
+    internal sealed class SequenceAnalysis : ISequenceAnalysis {
         public string Execute(string input) {
             if (input is null) {
                 throw new ArgumentNullException(nameof(input));

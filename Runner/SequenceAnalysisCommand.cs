@@ -1,7 +1,7 @@
-﻿using CmdApp.Domain;
+﻿using Domain;
 using McMaster.Extensions.CommandLineUtils;
 
-namespace CmdApp.Runner {
+namespace Runner {
     [Command(Description = "Find the uppercase words in a string, and order all characters in these words alphabetically")]
     public class SequenceAnalysisCommand {
         public const string Name = "sequenceAnalysis";

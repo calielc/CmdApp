@@ -1,14 +1,16 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Numerics;
-using McMaster.Extensions.CommandLineUtils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 
 namespace CmdApp.Runner.Tests {
     [TestClass]
-    public class SumOfMultipleCommandTests {
+    public sealed class SumOfMultipleCommandTests {
+        private ConsoleMock _consoleMock;
+
+        [TestInitialize]
+        public void SetUp() {
+            _consoleMock = new ConsoleMock();
+        }
+
         [TestMethod]
         [DataRow(5874698)]
         [DataRow(456)]
@@ -17,13 +19,11 @@ namespace CmdApp.Runner.Tests {
                 Limit = limit.ToString()
             };
 
-            var expected = new SumOfMultiple.SumOfMultiple(limit).Execute();
+            var expected = new SumOfMultiple.SumOfMultiple().Execute(limit);
 
-            var (consoleMock, textWriterMock) = MockConsole();
-            service.OnExecute(consoleMock.Object);
+            service.OnExecute(_consoleMock.Object);
 
-            textWriterMock.Verify(mock => mock.WriteLine(It.IsAny<string>()));
-            textWriterMock.Verify(mock => mock.WriteLine(expected.ToString("#,##0")));
+            _consoleMock.VerifyWriteLine(expected.ToString("#,##0"));
         }
 
         [TestMethod]
@@ -33,8 +33,7 @@ namespace CmdApp.Runner.Tests {
                 Limit = null
             };
 
-            var (consoleMock, _) = MockConsole();
-            service.OnExecute(consoleMock.Object);
+            service.OnExecute(_consoleMock.Object);
         }
 
         [TestMethod]
@@ -50,8 +49,7 @@ namespace CmdApp.Runner.Tests {
                 Limit = limit
             };
 
-            var (consoleMock, _) = MockConsole();
-            service.OnExecute(consoleMock.Object);
+            service.OnExecute(_consoleMock.Object);
         }
 
         [TestMethod]
@@ -61,16 +59,7 @@ namespace CmdApp.Runner.Tests {
                 Limit = "-1"
             };
 
-            var (consoleMock, _) = MockConsole();
-            service.OnExecute(consoleMock.Object);
-        }
-
-        private static (Mock<IConsole>, Mock<TextWriter>) MockConsole() {
-            var consoleMock = new Mock<IConsole>();
-            var textWriterMock = new Mock<TextWriter>();
-            consoleMock.SetupGet(mock => mock.Out).Returns(textWriterMock.Object);
-
-            return (consoleMock, textWriterMock);
+            service.OnExecute(_consoleMock.Object);
         }
     }
 }

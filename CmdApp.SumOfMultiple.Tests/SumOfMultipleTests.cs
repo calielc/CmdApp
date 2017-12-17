@@ -10,7 +10,8 @@ namespace CmdApp.SumOfMultiple.Tests {
         [DataRow(-789)]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Should_throw_exception_when_limit_is_below_0(int limit) {
-            var unused = new SumOfMultiple(limit);
+            var service = new SumOfMultiple();
+            var unsued = service.Execute(limit);
         }
 
         [TestMethod]
@@ -26,13 +27,13 @@ namespace CmdApp.SumOfMultiple.Tests {
         [DataRow(10_000_000ul, "23333331666668")]
         [DataRow(10_000_000_000ul, "23333333331666666668")]
         [DataRow(1_000_000_000_000_000ul, "233333333333333166666666666668")]
-        public void Shoud_return_sum_of_multiples_of_3_or_5(ulong limit, string expected) {
-            var bigExpected = BigInteger.Parse(expected);
+        public void Shoud_return_sum_of_multiples_of_3_or_5(ulong limit, string expectedString) {
+            var expected = BigInteger.Parse(expectedString);
 
-            var service = new SumOfMultiple(limit);
-            var actual = service.Execute();
+            var service = new SumOfMultiple();
+            var actual = service.Execute(limit);
 
-            Assert.AreEqual(bigExpected, actual);
+            Assert.AreEqual(expected, actual);
         }
     }
 }

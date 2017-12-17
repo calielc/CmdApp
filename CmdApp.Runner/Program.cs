@@ -1,19 +1,19 @@
-﻿using CmdApp.SequenceAnalysis;
-using CmdApp.SumOfMultiple;
-using McMaster.Extensions.CommandLineUtils;
-using Microsoft.Extensions.DependencyInjection;
+﻿using McMaster.Extensions.CommandLineUtils;
 
 namespace CmdApp.Runner {
     [HelpOption]
     [Subcommand(SumOfMultipleCommand.Name, typeof(SumOfMultipleCommand))]
     [Subcommand(SequenceAnalysisCommand.Name, typeof(SequenceAnalysisCommand))]
     public class Program {
-        static void Main(string[] args) {
-            //var serviceProvider = new ServiceCollection()
-            //    .AddSingleton<ISumOfMultiple, SumOfMultiple.SumOfMultiple>()
-            //    .AddSingleton<ISequenceAnalysis, SequenceAnalysis.SequenceAnalysis>();
+        static void Main(string[] args) => CommandLineApplication.Execute<Program>(args);
 
-            CommandLineApplication.Execute<Program>(args);
+        private int OnExecute(CommandLineApplication app, IConsole console) {
+            console.WriteLine("There are 2 avaiable commands:");
+            console.WriteLine("");
+            console.WriteLine($"{SequenceAnalysisCommand.Name} --input \"This IS a STRING\"");
+            console.WriteLine($"{SumOfMultipleCommand.Name} --limit 1000");
+
+            return 1;
         }
     }
 }

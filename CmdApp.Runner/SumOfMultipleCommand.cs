@@ -1,5 +1,5 @@
 ﻿using System.Numerics;
-using CmdApp.SumOfMultiple;
+using CmdApp.Domain;
 using McMaster.Extensions.CommandLineUtils;
 
 namespace CmdApp.Runner {
@@ -7,22 +7,20 @@ namespace CmdApp.Runner {
     public class SumOfMultipleCommand {
         public const string Name = "sumOfMultiple";
 
-        [Option(CommandOptionType.SingleValue, LongName = "limit", ShortName = "l")]
-        public string Limit { get; set; }
-
-        public int OnExecute(IConsole console) {
-            var bigLimit = BigInteger.Parse(Limit);
-
-            var service = NewService();
-            var value = service.Execute(bigLimit);
-
-            console.WriteLine(value.ToString("#,##0"));
-
-            return 1;
+        [Option(CommandOptionType.SingleValue, Description = "Required limit", LongName = "limit", ShortName = "l")]
+        public string LimiteAsString {
+            get => Limit.ToString();
+            set => Limit = BigInteger.Parse(value);
         }
 
-        protected virtual ISumOfMultiple NewService() {
-            return new SumOfMultiple.SumOfMultiple();
+        internal BigInteger Limit { get; set; }
+
+        public int OnExecute(IConsole console) {
+            var service = Container.GetService<ISumOfMultiple>();
+            var value = service.Execute(Limit);
+
+            console.WriteLine(value.ToString("#,##0"));
+            return 1;
         }
     }
 }
